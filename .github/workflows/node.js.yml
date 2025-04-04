@@ -1,0 +1,25 @@
+pull_request:
+  branches:
+    - main
+
+jobs:
+  test:
+    runs-on: ubuntu-latest
+    services:
+    mongodb:
+      image: mongo 6.0
+      ports: 27017:27017
+    
+    steps:
+      - name: check-out code
+        uses: actions/checkout@v3
+        with:
+          node-version: '22'
+    
+      - name: install depedencies
+        run: npm install
+
+      - name: run unit tests
+        env: 
+          MONGO_URI: " mongodb://0.0.0.0:27017/marvel-guerra-dos-reinos"
+        run: npm test
