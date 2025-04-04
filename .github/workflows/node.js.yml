@@ -7,9 +7,6 @@ on:
 jobs:
   test:
     runs-on: ubuntu-latest
-    mongodb:
-      image: mongo 6.0
-      ports: 27017:27017
     
     steps:
       - name: check-out code
